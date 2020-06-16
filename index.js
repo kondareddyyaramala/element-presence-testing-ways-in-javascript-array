@@ -48,15 +48,27 @@ calculateTime((a, val) => {
 // for of loop
 calculateTime((a, val) => {
   let isPresent = false;
-  for(let i = 0; i < a.length; i++){
+  for(const elm of a){
+    if(elm === val){
+      isPresent = true;
+      break;
+    }
+  }
+  return isPresent;
+}, 'For of loop');
+
+
+// For in loop
+calculateTime((a, val) => {
+  let isPresent = false;
+  for(const i in a){
     if(a[i] === val){
       isPresent = true;
       break;
     }
   }
   return isPresent;
-}, 'Native for loop');
-
+}, 'For in loop');
 
 
 
