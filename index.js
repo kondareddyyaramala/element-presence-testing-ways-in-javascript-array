@@ -7,15 +7,24 @@ appDiv.innerHTML = `<h1>JS Starter</h1>`;
 
 const testCases = [1, 500000, 1000000, 1000010];
 let arr = new Array(1000000).fill(0).map((v, i) => i + 1);
+let results = [];
+
+
+const createResult =  {
+    testMethod: 'name',
+    getAverage: () => {
+      return this.testMethod;
+    }
+  }
 
 const calculateTime = (func, name) => {
-  console.log('Starting perf :: ', name);
+  let result = { testMethod: name };
   testCases.forEach((v, i) => {
     let startTime = performance.now();
     let resp = func(arr, v);
-    console.log(`Case ${i+1} :: Resp ${resp} :: ${Number(performance.now() - startTime).toFixed(4)}`);
+    result[`Case ${i + 1}`] =  Number(performance.now() - startTime).toFixed(4);
   })
-  console.log('Completing perf :: ', name);
+  results.push(result);
 }
 
 // Array.some
@@ -70,5 +79,10 @@ calculateTime((a, val) => {
   return isPresent;
 }, 'For in loop');
 
+
+// print results in console
+// console.table(results);
+let method = createResult.getAverage.bind(createResult);
+console.log(createResult.getAverage.bind(method)());
 
 
