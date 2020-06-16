@@ -13,7 +13,7 @@ const calculateTime = (func, name) => {
   testCases.forEach((v, i) => {
     let startTime = performance.now();
     let resp = func(arr, v);
-    console.log(`Case ${i+1} :: Resp ${resp} :: ${Number(performance.now() - startTime).toFixed(6)}`);
+    console.log(`Case ${i+1} :: Resp ${resp} :: ${Number(performance.now() - startTime).toFixed(4)}`);
   })
   console.log('Completing perf :: ', name);
 }
