@@ -5,7 +5,7 @@ import './style.css';
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>JS Starter</h1>`;
 
-const testCases = [1, 50000, 1000000, 1000010];
+const testCases = [1, 500000, 1000000, 1000010];
 let arr = new Array(1000000).fill(0).map((v, i) => i + 1);
 
 const calculateTime = (func, name) => {
