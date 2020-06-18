@@ -6,12 +6,15 @@ let results = [];
 
 const calculateTime = (func, name) => {
   let result = { testMethod: name };
+  let totalTime = 0;
   testCases.forEach((v, i) => {
     let startTime = performance.now();
     let resp = func(array, v);
-    result[`Case ${i + 1}`] = Number((performance.now() - startTime).toFixed(4));
-    result[`Case ${i + 1} Resp`] = resp;
+    const respTime = Number((performance.now() - startTime).toFixed(4));
+    result[`Case ${i + 1}`] = respTime;
+    totalTime += +respTime;
   })
+  result['Average'] = Number((totalTime / 4).toFixed(4));
   results.push(result);
 }
 
